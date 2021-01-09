@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Abhishek's homepage</title>
+</head>
+
+<body>
+<h2>Accessing internet on server machine</h2>
+<p>Server machines do not have direct internet connection and, like other department machines, you need to login into proxy server before you can access internet.  However, there is a way to access internet without directly logging-in into the proxy.
+Using a machine which is already authenicated with the proxy server as a proxy, we can connect to the internet without actually logging-in ourselves.</p>
+<h3>Here's HOWTO do it on our server machines:</h3>
+<ol>
+<li>Get <code>ssh</code> access to &quot;inet_bridge&quot; (IP: <code>10.17.50.50</code>, port: <code>32780</code>)</li>
+<li>[OPTIONAL] Create key-pair to allow password-less authenication.</li>
+<li>Add configuration entry for <code>inet_bridge</code> in your <code>.ssh/config</code>:
+<pre><code>Host inet_bridge
+  Hostname 10.17.50.50
+  User &lt;username&gt;
+  Port 32780
+  # IdentityFile ~/.ssh/inet_bridge_id_rsa
+</code></pre>
+</li>
+<li>Create a dynamic port forwarding tunnel using <code>ssh -ND 9999 inet_bridge</code>.  Leave it like this and open another terminal tab/window.</li>
+<li>Copy the following proxychains configuration to a new file <code>~/.proxychains/proxychains.conf</code>:
+<pre><code>strict_chain
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+
+[ProxyList]
+socks5 127.0.0.1 9999
+http 10.17.50.26 3128
+</code></pre>
+</li>
+<li>Use <code>proxychains</code> before command name to proxify the connection.  For example, <code>proxychains git clone https://github.com/westes/flex</code></li>
+</ol>
+</body>
+</html>
