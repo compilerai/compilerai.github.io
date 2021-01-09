@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Abhishek's homepage</title>
+</head>
+
+<body>
+<h2>Accessing internet on server machine</h2>
+<p>Server machines do not have direct internet connection and, like other department machines, you need to login into proxy server before you can access internet.  The following steps show how to login into proxy server using the <code>iitd-login.py</code> script.</p>
+<p>As the server is shared by many users, we advise that you remain logged-in into proxy server only while you need internet connection and disconnect as soon as possible.</p>
+<h3>HOWTO login into proxy server without GUI using <code>iitd-login.py</code> script</h3>
+<ol>
+<li>Setup environment variables for your proxy server.  For e.g., for PhD students <code>http_proxy</code> (and friends) need to be set to <code>http://proxy61.iitd.ac.in:3128</code>.
+<ul>
+<li>The exhaustive list of variables is: <code>http_proxy</code>, <code>https_proxy</code>, <code>HTTP_PROXY</code>, <code>HTTPS_PROXY</code>.</li>
+</ul>
+</li>
+<li>Download the <a href='iitd-login.py'><code>iitd-login.py</code></a> script and copy it to your home directory.
+<li>In the script, change <code>PROXY_BASE_URL</code> to the URL for your proxy (for e.g., it is <code>proxy61.iitd.ac.in</code> for PhD students).</li>
+<li>Start a tmux session: <code>tmux</code></li>
+<li>Launch the login script: <code>env -u http_proxy -u https_proxy -u HTTP_PROXY -u HTTPS_PROXY python3 iitd-login.py -d</code></li>
+<li>Provide credentials</li>
+<li>On success, the message &quot;Logged in.&quot; will be printed (along with other messages).</li>
+<li>Detach from the tmux session using <code>C-b d</code> (Ctrl+B followed by d)</li>
+<li>Do your <code>git pull</code> etc.</li>
+<li>Attach to tmux session with <code>tmux a</code></li>
+<li>Hit <code>C-c</code> to logout from proxy server.</li>
+<li>Exit from shell to close tmux session.</li>
+</ol>
+</body>
+</html>
