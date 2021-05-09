@@ -1,0 +1,72 @@
+<html lang="en">
+  <head>
+        <link rel="icon" href="favicon.ico?v=1">
+        <meta charset="UTF-8">
+        <title>compiler.ai : Bugs found by our Verification Tools</title>
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@CompileExplore">
+        <meta property="og:image" content="https://github.com/compiler-explorer/infra/blob/master/logo/favicon.png?raw=true">
+        <meta property="og:image:secure_url" content="https://github.com/compiler-explorer/infra/blob/master/logo/favicon.png?raw=true">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="145">
+        <meta property="og:image:height" content="145">
+        <meta name="author" content="Sorav Bansal">
+        <meta name="google" content="nositelinkssearchbox">
+        <meta name="google" content="notranslate">
+        <meta id="meta-theme" name="theme-color" content="#f2f2f2">
+    <link rel="stylesheet" href="https://compiler.ai/bugs/main.css">
+    <meta name='viewport', content='width=device-width, initial-scale=1.0'>
+    <title>compiler.ai · Bugs found by our Verification Tools</title>
+  </head>
+  <body> 
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href='/', title='Home'>compiler.ai : Bugs</a>
+        </h3>
+        <small>Bugs discovered found by our Verification Tools</small>
+      </header>
+      <main>
+        <article class="post">
+          <p>This page links to the original bug reports which were usually fixed by the developers with thanks.  These are all subtle bugs that are very hard to catch just through manual inspection (even after the tool points out the issue to you).</p>
+          <p></p>
+          <ol>
+            <li> <a href=https://community.intel.com/t5/Intel-C-Compiler/icc-16-0-3-not-respecting-fno-strict-overflow-flag/td-p/1078194>Bug in ICC-16.03 involving integer overflow</a>.
+            <ul>
+             <li>This bug was found by our translation validator that checks equivalence between the generated binary and the original C program.</li>
+            </ul>
+            </li>
+            <li> <a href=https://community.intel.com/t5/Intel-C-Compiler/icc-16-0-3-not-respecting-no-ansi-alias-flag/td-p/1075325>Bug in ICC-16.03 related to incorrect reordering of memory accesses</a>.
+            <ul>
+             <li>This bug was found by our translation validator that checks equivalence between the generated binary and the original C program.</li>
+            </ul>
+            </li>
+            <li> <a href=https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68480>Bug in GCC-4.8 involving incorrect reordering of memory accesses</a>.
+            <ul>
+             <li>This bug was found by our translation validator that checks equivalence between the generated binary and the original C program.</li>
+            </ul>
+           </li>
+
+            <li> <a href=https://mail.gnu.org/archive/html/qemu-devel/2014-06/msg02675.html>Bug in Qemu machine emulator that is shipped with Linux/KVM hypervisor</a>.
+            <ul>
+               <li>This bug was found by our translation validator that checks equivalence between the generated PowerPC binary and the original x86 binary (in the context of Qemu's binary translator).</li>
+               <li>Sorav was tipped some bitcoins for this bug fix</li>
+            </ul>
+            </li>
+            <li> Three bugs in DietLibc, a C library for embedded systems (We describe one of the bugs below).
+            <ul>
+               <li><img src="https:///compiler.ai/bugs/dietlibc_bug.png" alt="Dietlibc bug"></li>
+               <li> All these bugs involve subtle interactions of the <code>char</code> and <code>int</code> types.  These bugs had escaped years of testing and production use.</li>
+               <li><a href=http://www.cse.iitd.ac.in/~abhir>Abhishek Rose</a> was <a href=https://www.fefe.de/dietlibc/credits.html>acknowledged as a Dietlibc contributor</a> by virtue of these fixes.</li>
+            </ul>
+            </li>
+            <li> <a href=https://github.com/SRI-CSL/yices2/issues/146>Bug in the Yices SMT Solver</a>
+              <ul>
+                <li>This bug was found by differentially testing the output of one SMT solver against another during our verification runs for C programs.</li>
+                <li>This bug report confirms that verification tools themselves are not immune to bugs. But it is usually possible to identify these bugs through simple testing, as we do in our tool.</li>
+              </ul>
+            </li>
+          </ul>
+       </article>
+       </main>
+      <footer class="footer"><small></small></footer></div></body></html>
