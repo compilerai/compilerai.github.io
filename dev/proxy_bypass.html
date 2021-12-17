@@ -11,13 +11,13 @@
 Using a machine which is already authenicated with the proxy server as a proxy, we can connect to the internet without actually logging-in ourselves.</p>
 <h3>Here's HOWTO do it on our server machines:</h3>
 <ol>
-<li>Get <code>ssh</code> access to &quot;inet_bridge&quot; (IP: <code>10.17.50.50</code>, port: <code>32780</code>)</li>
+<li>Get <code>ssh</code> access to &quot;inet_bridge&quot; (IP: <code>10.17.50.50</code>, port: <code>32780</code>).  We may need to request CSC for this. Alternatively, we could use <code>sri.cse.iitd.ac.in</code>.  Let's call this the <code>ssh-server</code> and let the corresponding username be <code>ssh-username</code>.  e.g., <code>ssh-server</code> could be either <code>10.17.50.50</code> (corresponding <code>ssh-port</code> would be <code>32780</code>) or <code>sri.cse.iitd.ac.in</code> (corresponding <code>ssh-port</code> would be <code>22</code>).</li>
 <li>[OPTIONAL] Create key-pair to allow password-less authenication.</li>
 <li>Add configuration entry for <code>inet_bridge</code> in your <code>.ssh/config</code>:
 <pre><code>Host inet_bridge
-  Hostname 10.17.50.50
-  User &lt;username&gt;
-  Port 32780
+  Hostname &lt;ssh-server&gt;
+  User &lt;ssh-username&gt;
+  Port &lt;ssh-port&gt;
   # IdentityFile ~/.ssh/inet_bridge_id_rsa
 </code></pre>
 </li>
@@ -29,7 +29,6 @@ tcp_connect_time_out 8000
 
 [ProxyList]
 socks5 127.0.0.1 9999
-http 10.17.50.26 3128
 </code></pre>
 </li>
 <li>Use <code>proxychains</code> before command name to proxify the connection.  For example, <code>proxychains git clone https://github.com/westes/flex</code></li>
