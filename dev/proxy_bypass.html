@@ -21,7 +21,7 @@ Using a machine which is already authenicated with the proxy server as a proxy, 
   # IdentityFile ~/.ssh/inet_bridge_id_rsa
 </code></pre>
 </li>
-<li>Create a dynamic port forwarding tunnel using <code>ssh -ND 9999 inet_bridge</code>.  Leave it like this and open another terminal tab/window.</li>
+<li>Create a dynamic port forwarding tunnel using <code>ssh -ND 9999 sri</code>.  Leave it like this and open another terminal tab/window.</li>
 <li>Copy the following proxychains configuration to a new file <code>~/.proxychains/proxychains.conf</code>:
 <pre><code>strict_chain
 tcp_read_time_out 15000
@@ -31,7 +31,23 @@ tcp_connect_time_out 8000
 socks5 127.0.0.1 9999
 </code></pre>
 </li>
+<li>[OPTIONAL] Use the following proxychains configuration in <code>/etc/proxychains.conf</code>
+<pre><code>strict_chain
+
+proxy_dns
+
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+
+[ProxyList]
+socks5 127.0.0.1 9999
+</code></pre>
+</li>
 <li>Use <code>proxychains</code> before command name to proxify the connection.  For example, <code>proxychains git clone https://github.com/westes/flex</code></li>
+<li>For <code>apt</code> suite of programs, the proxy settings can be specified in a configuration file so that they can be invoked without <code>proxychains</code> prefix:
+  <pre><code># echo 'Acquire::http::proxy "socks5h://localhost:9999";' >> /etc/apt/apt.conf.d/99proxy
+  </code></pre>
+</li>
 </ol>
 </body>
 </html>
