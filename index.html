@@ -135,7 +135,7 @@ the equivalence checker on your browser by following the steps below.
 
 <h1 id="start">Start an equivalence check</h1>
 <ol>
-<li> Click on the first icon from the top on the left pane to open a command menu. Open the files (or create new files) in the editor, for which you would like to compute equivalence or perform verified compilation. 
+<li> Click on the first icon from the top on the left pane to open a command menu. Open the files (or create new files) in the editor, for which you would like to compute equivalence or perform verified compilation.
 <div class="imgbox">
 <img class="center-fit" src=open-files.png alt="Open files for which you want to compute equivalence">
 </div>
@@ -249,8 +249,22 @@ in the equivalence checker with the corresponding session name (provided with ea
 <p>These examples demonstrate that
 the equivalence checker is able to compute equivalence for a
 large category of transformations
-on a large set of programs.  We are continuously
-improving its performance and coverage.  Please try it for yourself.  If you
+on a large set of programs. If an equivalence check does not succeed (e.g., it
+runs for a long time and gets terminated after a timeout), then this may be either
+because the programs were inequivalent or because our algorithm just could not
+identify an equivalence proof.
+
+<p>
+We are continuously
+improving the coverage of our equivalence checker, i.e., we are always working to minimize
+the cases where the equivalence checker is unable to identify an equivalence proof (when
+the programs were indeed equivalent). If you are using the tool to produce a verified compilation
+of a C program,
+you can make the equivalence proof search more tractable by
+dividing the C program into smaller individual functions.
+
+<p>
+Please try the equivalence check for yourself.  If you
 have feedback, please share it with <a href=mailto:sorav@compiler.ai>sorav@compiler.ai</a> --- we will be very happy to hear from you.
   </body>
 </html>
