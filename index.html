@@ -13,6 +13,10 @@
         .session-name {
           background-color: lightblue;
         }
+        .example-description {
+          color: red;
+        }
+
         .imgbox {
             display: grid;
             height: 55%;
@@ -210,7 +214,7 @@ Each example entry shown below can be accessed by using the &quot;<a href=#loads
 in the equivalence checker with the corresponding session name (provided with each entry).
 <ul>
 <li> <a href=https://github.com/UoB-HPC/TSVC_2>Testsuite for Vectorizing Compilers</a>.<br>
-<small>The compilations of these programs involve aggressive loop vectorizing transformations.</small>
+<small class=example-description>The compilations of these programs involve aggressive loop vectorizing transformations.</small>
 <ul>
 <li>Compiled using Clang-12 at <code>O3</code>: session name <code class="session-name">tsvc-clang</code></li>
 <li>Compiled using GCC-8 at <code>O3</code>: session name <code class="session-name">tsvc-gcc</code></li>
@@ -218,16 +222,21 @@ in the equivalence checker with the corresponding session name (provided with ea
 </ul>
 </li>
 <li> Verified <code>O1</code> compilation of sorting functions, such as quicksort, mergesort, etc.: session name <code class="session-name">sorting-functions</code>.<br>
-<small>These functions involve local variables, recursion, variadic functions and function calls.</small>
+<small class=example-description>These functions involve local variables, recursion, variadic functions and function calls.</small>
 </li>
 <li> Verified <code>O1</code> compilation of functions from the <code>bzip2</code> compression utility: session name <code class="session-name">bzip2</code>.<br>
-<small>These are larger functions with very complex control flow and memory allocation patterns.</small>
+<small class=example-description>These are larger functions with very complex control flow and memory allocation patterns.</small>
 </li>
 <li> Equivalence of two manually coded programs, source-to-source or source-to-assembly: session name <code class="session-name">manually-coded</code>.<br>
-<small>These are indicative of the types of transformations that the equivalence checker can tackle automatically.</small>
+<small class=example-description>These manual transformations are tackled automatically by the equivalence checker.</small>
 </li>
 </ul>
 
+<p>These examples demonstrate that
+the equivalence checker is able to compute equivalence for a
+large category of transformations
+on a large set of programs.  Please try it for yourself and share your
+feedback with <a href=https://sorav.compiler.ai>Sorav Bansal</a> over email.
   </body>
 </html>
 
