@@ -4,6 +4,13 @@
 		<link rev="made" href="mailto:sorav@compiler.ai">
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <style>
+        h1 {
+          color: blue
+        }
+        p {
+          word-break: break-all;
+          white-space: normal;
+        }
         .imgbox {
             display: grid;
             height: 55%;
@@ -51,10 +58,10 @@ the equivalence checker on your browser by following the steps below.
 <li> <a href="#video">Demonstration video</a></li>-->
   </ul>
 
-<h1 name="install">Install the equivalence checker on the browser</h1>
+<h1 id="install">Install the equivalence checker on the browser</h1>
 
 <ol>
-<li> Go to <a href=https://vscode.dev>https://vscode.dev</a>. </li>
+<li> <b>Go to <a href=https://vscode.dev>https://vscode.dev</a></b>. </li>
 <li> Click on the sixth icon from the top on the left pane, labeled "Extensions" (Ctrl+Shift+X).
 <div class="imgbox">
 <img class="center-fit" src=extensions.png alt="Click on the Extensions icon on the left">
@@ -82,7 +89,7 @@ the equivalence checker on your browser by following the steps below.
 </li>
 </ol>
 
-<h1 name="login">Authenticate using your email address</h1>
+<h1 id="login">Authenticate using your email address</h1>
 <ol>
 <li> Click on the second icon from the top on the left pane, labeled &quot;Explorer&quot; (Ctrl+Shift+E). Expand the &quot;Equivalence Checks&quot; and &quot;Search Tree&quot; panes by clicking on them.
 <div class="imgbox">
@@ -106,7 +113,7 @@ the equivalence checker on your browser by following the steps below.
 </li>
 </ol>
 
-<h1 name="start">Start an equivalence check</h1>
+<h1 id="start">Start an equivalence check</h1>
 <ol>
 <li> Click on the first icon from the top on the left pane to open a command menu. Open the files (or create new files) in the editor, for which you would like to compute equivalence or perform verified compilation. 
 <div class="imgbox">
@@ -141,7 +148,7 @@ If the input files contained multiple functions, a separate eqcheck entry is cre
 </li>
 </ol>
 
-<h1 name="viewproof">View an equivalence proof and the search tree for a proof</h1>
+<h1 id="viewproof">View an equivalence proof and the search tree for a proof</h1>
 <ol>
 <li> For a successful equivalence check, you can right-click on the eqcheck entry to select &quot;View Proof&quot;.
 <div class="imgbox">
@@ -186,7 +193,7 @@ backtrack during this search for a proof.
 
 </ol>
 
-<h1 name="loadsave">Save and load a session</h1>
+<h1 id="loadsave">Save and load a session</h1>
 You can save a session (potentially with multiple ongoing equivalence checks) and load it later (potentially on
 a different machine).  To avail this feature, right-click on the &quot;Start an Eqcheck&quot; button.
 <div class="imgbox">
