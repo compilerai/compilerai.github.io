@@ -10,6 +10,9 @@
         p {
           white-space: normal;
         }
+        .filename {
+          background-color: gray;
+        }
         .main-text {
           background-color: lightblue;
         }
@@ -139,7 +142,7 @@ the equivalence checker on your browser by following the steps below.
 <li> Click on &quot;Start an Eqcheck&quot; button to start an equivalence check.  The button displays the email address of the current user and the number of remaining equivalence checks in her quota.  Upon clicking this button, you are presented a drop-down menu of potential equivalence checks (or verified compilations) that you can perform on the opened files.
 
 <p>
-If you choose a verified compilation (e.g., &quot;Compile strlen_src.c&quot;), the tool first compiles the C source code and then performs an equivalence check between the source code and the generated 32-bit x86 executable.  If you choose an equivalence check (e.g., &quot;strlen_src.c &#x2192; strlen_dst.c&quot;), then an equivalence check is performed between the two C programs, or a C program an an assembly program.
+If you choose a verified compilation (e.g., &quot;Compile <code class=filename><a href=strlen_src.c>strlen_src.c</a></code>&quot;), the tool first compiles the C source code and then performs an equivalence check between the source code and the generated 32-bit x86 executable.  If you choose an equivalence check (e.g., &quot;<code class=filename><a href=strlen_src.c>strlen_src.c</a></code> &#x2192; <code class=filename><a href=strlen_dst.c>strlen_dst.c</a></code>&quot;), then an equivalence check is performed between the two C programs, or a C program an an assembly program.
 
 <p>
 The equivalence checks are performed at function granularity.  For two files to be compared for equivalence, they should have functions with the same names (but potentially different implementations) in both files.
