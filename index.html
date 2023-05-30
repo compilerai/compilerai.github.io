@@ -10,6 +10,9 @@
         p {
           white-space: normal;
         }
+        .main-text {
+          background-color: lightblue;
+        }
         .session-name {
           background-color: lightblue;
         }
@@ -31,27 +34,35 @@
 	<body>
   <h1 align=left>Equivalence checking and Verified compilation</h1>
 
-The use of <em>safety-critical software</em> applications is rapidly
-growing in the aerospace, defence, automobile, transportation,
+The use of <em>safety-critical software</em> applications is
+growing rapidly in aerospace, defence, automobile, transportation,
 cybersecurity, and energy sectors.  Given the catastrophic costs
-of a software bug, it is not sufficient to use an off-the-shelf
+of a software bug in these sectors, it is not sufficient to use an off-the-shelf
 commodity compiler to compile the source code to executable code. A modern
-compiler has millions of lines of code, and a bug in the compiler can
-cause incorrect executable code to be generated.
+compiler has millions of lines of code, and tens of bugs are discovered
+in popular compilers every month. A compiler bug may yield
+buggy executable code, even when the source code was correct.
 
 <p>
-For these reasons, most safety-critical sectors require that the executable
-code is verified, i.e., it is not sufficient to only verify the source
-code (e.g., DO-178C in aerospace).
-Current methods to verify the executable code are ad hoc --- disabling of
-compiler optimizations with laborious manual reviews of the executable
-code are performed for safety audits.
+These safety-critical sectors are usually governed by software
+safety standards, e.g., DO-178C (aerospace)
+requires the developer to verify the executable code, and not just the
+source code.
+Current methods to verify executable code are ad hoc --- for
+example, developers often disable
+compiler optimizations and undertake laborious manual reviews of the executable
+code, as required for safety audits.
 
 <p>
 Based on over eleven years of research at IIT Delhi, we have developed a formal
 equivalence checker that checks whether the executable code is equivalent
 to the source code.  CompilerAI Labs Pvt. Ltd. is a startup incubated at IIT
-Delhi that is commercializing this formal equivalence checker.  You can test-drive
+Delhi that is commercializing this formal equivalence checker.
+Our equivalence checker can be used by the developers to obtain
+independently verifiable proofs of correctness of the executable code (with
+respect to the source code) --- this enables a more systematic validation
+method for the correctness of a compilation than the current practice.
+You can test-drive
 the equivalence checker on your browser by following the steps below.
 
   <ul>
@@ -67,7 +78,7 @@ the equivalence checker on your browser by following the steps below.
 <h1 id="install">Install the equivalence checker on the browser</h1>
 
 <ol>
-<li> <b>Go to <a href=https://vscode.dev>https://vscode.dev</a></b>. </li>
+<li> <b class=main-text>Go to <a href=https://vscode.dev>https://vscode.dev</a></b><br><br> </li>
 <li> Click on the sixth icon from the top on the left pane, labeled "Extensions" (Ctrl+Shift+X).
 <div class="imgbox">
 <img class="center-fit" src=extensions.png alt="Click on the Extensions icon on the left">
@@ -204,7 +215,7 @@ backtrack during this search for a proof.
 
 <h1 id="loadsave">Save and load a session</h1>
 You can save a session (potentially with multiple ongoing equivalence checks) and load it later (potentially on
-a different machine).  To avail this feature, right-click on the &quot;Start an Eqcheck&quot; button.
+a different machine).  To access this feature, right-click on the &quot;Start an Eqcheck&quot; button.
 <div class="imgbox">
 <img class="center-fit" src=eqcheck-loadsave-click.png alt="Explore the search tree by clicking on its nodes">
 </div>
