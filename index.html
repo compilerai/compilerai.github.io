@@ -1,21 +1,200 @@
 <html>
 	<head>
-		<title> CompilerAI's Webpage </title>
+		<title> CompilerAI's Equivalence Checker</title>
 		<link rev="made" href="mailto:sorav@compiler.ai">
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-   <link href="css/main.css" rel="stylesheet">
+    <style>
+        .imgbox {
+            display: grid;
+            height: 55%;
+        }
+        .center-fit {
+            max-width: 50%;
+            max-height: 50vh;
+        }
+    </style>
 	</head>
 
 	<body>
-  <h1 align=left>CompilerAI's Webpage</h1>
+  <h1 align=left>Equivalence checking, translation validation, and verified compilation</h1>
 
-  <p> CompilerAI is a startup incubated by <a href=https://sorav.compiler.ai>Sorav Bansal</a> at IIT Delhi.
+The use of <em>safety-critical software</em> applications is rapidly
+growing in the aerospace, defence, automobile, transportation,
+cybersecurity, and energy sectors.  Given the catastrophic costs
+of a software bug, it is not sufficient to use an off-the-shelf
+commodity compiler to compile the source code to executable code. A modern
+compiler has millions of lines of code, and a bug in the compiler can
+cause incorrect executable code to be generated.
 
-  <p> The primary product being developed by CompilerAI is a <em>Compiler Validator</em> for safety-critical systems, such as those found in aerospace, defence, automobile, and cybersecurity sectors.
+<p>
+For these reasons, most safety-critical sectors require that the executable
+code is verified, i.e., it is not sufficient to only verify the source
+code (e.g., DO-178C in aerospace).
+Current methods to verify the executable code are ad hoc --- disabling of
+compiler optimizations with laborious manual reviews of the executable
+code are performed for safety audits.
 
-  <p> CompilerAI is a winner of the IDEX Open Challenge 1.0 and as a part of this grant, CompilerAI is working with the Indian Air Force.
+<p>
+Based on over eleven years of research at IIT Delhi, we have developed a formal
+equivalence checker that checks whether the executable code is equivalent
+to the source code.  CompilerAI Labs Pvt. Ltd. is a startup incubated at IIT
+Delhi that is commercializing this formal equivalence checker.  You can test-drive
+the equivalence checker on your browser by following the steps below.
 
-  <p> A public demonstration of our compiler validator is under way.  Please write to us if you would like to access an early version of our product.
+  <ul>
+<li> <a href="#install">Install the equivalence checker on the browser as a vscode.dev extension</a></li>
+<li> <a href="#login">Authenticate using your email address</a></li>
+<li> <a href="#start">Start an equivalence check</a></li>
+<li> <a href="#viewproof">View an equivalence proof and the search tree of a proof</a></li>
+<li> <a href="#loadsave">Save and load a session</a></li>
+<!--<li> <a href="#examples">Examples of successful equivalence checks, with proofs</a></li>
+<li> <a href="#video">Demonstration video</a></li>-->
+  </ul>
+
+<h1 name="install">Install the equivalence checker on the browser</h1>
+
+<ol>
+<li> Go to <a href=https://vscode.dev>https://vscode.dev</a>. </li>
+<li> Click on the sixth icon from the top on the left pane, labeled "Extensions" (Ctrl+Shift+X).
+<div class="imgbox">
+<img class="center-fit" src=extensions.png alt="Click on the Extensions icon on the left">
+</div>
+</li>
+<li> Search for the "Eqchecker" extension by CompilerAI.
+<div class="imgbox">
+<img class="center-fit" src=eqchecker-extension.png alt="Type Eqchecker in the extension search box">
+</div>
+</li>
+<li> Check the version number of the "Eqchecker" extension. It should be at least <code>0.4.0</code>.
+<div class="imgbox">
+<img class="center-fit" src=eqchecker-extension-version.png alt="Check the Eqchecker extension version">
+</div>
+</li>
+<li> Install the "Eqchecker" extension.
+<div class="imgbox">
+<img class="center-fit" src=eqchecker-extension-install.png alt="Install the Eqchecker extension">
+</div>
+</li>
+<li> Wait for the extension to get installed.
+<div class="imgbox">
+<img class="center-fit" src=eqchecker-extension-installed.png alt="Check that the Eqchecker extension is installed.">
+</div>
+</li>
+</ol>
+
+<h1 name="login">Authenticate using your email address</h1>
+<ol>
+<li> Click on the second icon from the top on the left pane, labeled &quot;Explorer&quot; (Ctrl+Shift+E). Expand the &quot;Equivalence Checks&quot; and &quot;Search Tree&quot; panes by clicking on them.
+<div class="imgbox">
+<img class="center-fit" src=explorer.png alt="Explorer view. Expand the &quot;Equivalence Checks&quot; and &quot;Search Tree&quot; panes">
+</div>
+</li>
+<li> Click on &quot;Login&quot; in the &quot;Equivalence Checks&quot; pane.
+<div class="imgbox">
+<img class="center-fit" src=login-click.png alt="Click on Login">
+</div>
+</li>
+<li> Enter your email address.  Each email address is given a free quota of ten equivalence checks per month.  We need to enforce this quota due to the compute intensive nature of an equivalence check.  After you enter your email address and press enter, a One-Time-Password (OTP) will be sent to your email address.
+<div class="imgbox">
+<img class="center-fit" src=enter-email-address.png alt="Enter your email address">
+</div>
+</li>
+<li> Enter the four digit OTP received on your email address.
+<div class="imgbox">
+<img class="center-fit" src=enter-otp.png alt="Enter the OTP received on your email address">
+</div>
+</li>
+</ol>
+
+<h1 name="start">Start an equivalence check</h1>
+<ol>
+<li> Click on the first icon from the top on the left pane to open a command menu. Open the files (or create new files) in the editor, for which you would like to compute equivalence or perform verified compilation. 
+<div class="imgbox">
+<img class="center-fit" src=open-files.png alt="Open files for which you want to compute equivalence">
+</div>
+<li> Click on &quot;Start an Eqcheck&quot; button to start an equivalence check.  The button displays the email address of the current user and the number of remaining equivalence checks in her quota.  Upon clicking this button, you are presented a drop-down menu of potential equivalence checks (or verified compilations) that you can perform on the opened files.
+
+<p>
+If you choose a verified compilation (e.g., &quot;Compile strlen_src.c&quot;), the tool first compiles the C source code and then performs an equivalence check between the source code and the generated 32-bit x86 executable.  If you choose an equivalence check (e.g., &quot;strlen_src.c &#x2192; strlen_dst.c&quot;), then an equivalence check is performed between the two C programs, or a C program an an assembly program.
+
+<p>
+The equivalence checks are performed at function granularity.  For two files to be compared for equivalence, they should have functions with the same names (but potentially different implementations) in both files.
+<div class="imgbox">
+<img class="center-fit" src=start-eqcheck.png alt="Start an equivalence check">
+</div>
+</li>
+<li> After an equivalence check (or verified compilation) begins, the progress of the compilation is shown as an <em>eqcheck entry</em> in the &quot;Equivalence Checks&quot; pane.  The status of the corresponding entry updates as the equivalence check proceeds.
+
+<p>
+If the input files contained multiple functions, a separate eqcheck entry is created for each function, after the initial processing of the input files.
+
+<p>Depending on the complexity of the transformations and the size of the input function, an equivalence check can take anywhere between a few seconds to a few hours.  Our research continously strives to make this faster.
+<div class="imgbox">
+<img class="center-fit" src=eqcheck-progress.png alt="The progress of an equivalence check is available in the eqcheck entry">
+</div>
+</li>
+
+<li> A successful equivalence check is represented by a green-coloured eqcheck pane, labeled &quot;Found proof and safety&quot;.
+<div class="imgbox">
+<img class="center-fit" src=eqcheck-success.png alt="Successful equivalence check represented by a green eqcheck entry">
+</div>
+</li>
+</ol>
+
+<h1 name="viewproof">View an equivalence proof and the search tree for a proof</h1>
+<ol>
+<li> For a successful equivalence check, you can right-click on the eqcheck entry to select &quot;View Proof&quot;.
+<div class="imgbox">
+<img class="center-fit" src=eqcheck-viewproof-click.png alt="Click on &quot;View Proof&quot; to view a successful equivalence proof">
+</div>
+</li>
+
+<li> The visual proof is represented as a &quot;Product Graph&quot;. Each edge of the product graph encodes the lockstep
+execution of the two programs being compared for equivalence. Each node of the product graph represents the correlated PC (program counter)
+addresses of the two programs.
+
+<p>
+In addition to the product graph, the proof also includes panes that display the two programs (in source, assembly, and IR formats).
+You can click on an edge of the product graph to view the correlated paths in these programs (in each format).  The proof encodes the
+fact that the correlated paths behave identically and keep the two programs' states related.
+
+<p>This is a formal proof of equivalence: if our tool identifies two programs to be equivalent, then they are (in principle) guaranteed
+to behave identically for all possible legal inputs to the programs.
+<div class="imgbox">
+<img class="center-fit" src=eqcheck-viewproof.png alt="Click on the product-graph edges to view the correlated paths in the two programs determined to be equivalent">
+</div>
+</li>
+
+<li> Our equivalence checker constructs the equivalence proof incrementally.  The proof construction is designed
+as a search algorithm.  It is possible to view the search tree, both for an ongoing equivalence check, and for a completed
+equivalence check.  This can be done by right-clicking on an eqcheck entry and selecting &quot;View Search Tree&quot;.
+<div class="imgbox">
+<img class="center-fit" src=eqcheck-viewsearchtree-click.png alt="Click on &quot;View Search Tree&quot; to view the search tree of an (ongoing or completed) equivalence check">
+</div>
+</li>
+
+<li> The search tree is displayed in the &quot;Search Tree&quot; pane in a tree representation.  The tree represents all the different
+product-graphs explored by the equivalence checker before arriving at a final proof.
+
+<p>You can click on any of the nodes of this search tree to view the (partial) product graph developed incrementally by the algorihm
+till that stage.  Different branches of the tree may represent different product graphs --- it is possible for the search algorithm to
+backtrack during this search for a proof.
+<div class="imgbox">
+<img class="center-fit" src=eqcheck-viewsearchtree.png alt="Explore the search tree by clicking on its nodes">
+</div>
+</li>
+
+</ol>
+
+<h1 name="loadsave">Save and load a session</h1>
+You can save a session (potentially with multiple ongoing equivalence checks) and load it later (potentially on
+a different machine).  To avail this feature, right-click on the &quot;Start an Eqcheck&quot; button.
+<div class="imgbox">
+<img class="center-fit" src=eqcheck-loadsave-click.png alt="Explore the search tree by clicking on its nodes">
+</div>
+
+<!--<h1 name="examples">Examples of successful equivalence checks, with proofs</h1>-->
+
   </body>
 </html>
 
