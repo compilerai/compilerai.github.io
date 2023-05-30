@@ -8,8 +8,10 @@
           color: blue
         }
         p {
-          word-break: break-all;
           white-space: normal;
+        }
+        .session-name {
+          background-color: lightblue;
         }
         .imgbox {
             display: grid;
@@ -54,8 +56,8 @@ the equivalence checker on your browser by following the steps below.
 <li> <a href="#start">Start an equivalence check</a></li>
 <li> <a href="#viewproof">View an equivalence proof and the search tree of a proof</a></li>
 <li> <a href="#loadsave">Save and load a session</a></li>
-<!--<li> <a href="#examples">Examples of successful equivalence checks, with proofs</a></li>
-<li> <a href="#video">Demonstration video</a></li>-->
+<li> <a href="#examples">Examples of successful equivalence checks, with proofs</a></li>
+<!--<li> <a href="#video">Demonstration video</a></li>-->
   </ul>
 
 <h1 id="install">Install the equivalence checker on the browser</h1>
@@ -175,6 +177,9 @@ to behave identically for all possible legal inputs to the programs.
 <li> Our equivalence checker constructs the equivalence proof incrementally.  The proof construction is designed
 as a search algorithm.  It is possible to view the search tree, both for an ongoing equivalence check, and for a completed
 equivalence check.  This can be done by right-clicking on an eqcheck entry and selecting &quot;View Search Tree&quot;.
+
+<p>If the equivalence checker fails to successfully prove equivalence, the user may inspect the search tree to understand
+the reasons for the equivalence failure.
 <div class="imgbox">
 <img class="center-fit" src=eqcheck-viewsearchtree-click.png alt="Click on &quot;View Search Tree&quot; to view the search tree of an (ongoing or completed) equivalence check">
 </div>
@@ -200,7 +205,28 @@ a different machine).  To avail this feature, right-click on the &quot;Start an 
 <img class="center-fit" src=eqcheck-loadsave-click.png alt="Explore the search tree by clicking on its nodes">
 </div>
 
-<!--<h1 name="examples">Examples of successful equivalence checks, with proofs</h1>-->
+<h1 name="examples">Examples of successful equivalence checks, with proofs</h1>
+Each example entry shown below can be accessed by using the &quot;<a href=#loadsave>Load Session</a>&quot; option
+in the equivalence checker with the corresponding session name (provided with each entry).
+<ul>
+<li> <a href=https://github.com/UoB-HPC/TSVC_2>Testsuite for Vectorizing Compilers</a>.<br>
+<small>The compilations of these programs involve aggressive loop vectorizing transformations.</small>
+<ul>
+<li>Compiled using Clang-12 at <code>O3</code>: session name <code class="session-name">tsvc-clang</code></li>
+<li>Compiled using GCC-8 at <code>O3</code>: session name <code class="session-name">tsvc-gcc</code></li>
+<li>Compiled using ICC-2022.2.1 (Intel C Compiler) at <code>O3</code>: session name <code class="session-name">tsvc-icc</code></li>
+</ul>
+</li>
+<li> Verified <code>O1</code> compilation of sorting functions, such as quicksort, mergesort, etc.: session name <code class="session-name">sorting-functions</code>.<br>
+<small>These functions involve local variables, recursion, variadic functions and function calls.</small>
+</li>
+<li> Verified <code>O1</code> compilation of functions from the <code>bzip2</code> compression utility: session name <code class="session-name">bzip2</code>.<br>
+<small>These are larger functions with very complex control flow and memory allocation patterns.</small>
+</li>
+<li> Equivalence of two manually coded programs, source-to-source or source-to-assembly: session name <code class="session-name">manually-coded</code>.<br>
+<small>These are indicative of the types of transformations that the equivalence checker can tackle automatically.</small>
+</li>
+</ul>
 
   </body>
 </html>
