@@ -225,20 +225,16 @@ a different machine).  To access this feature, right-click on the &quot;Start an
 
 <h1 name="examples">Examples of successful equivalence checks with proofs</h1>
 Each example entry shown below can be accessed by using the &quot;<a href=#loadsave>Load Session</a>&quot; option
-in the equivalence checker with the corresponding session name (provided with each entry).
+in the equivalence checker with the corresponding session name (provided with each entry).  We use the Clang-12 compiler
+for each compilation (which is validated by our equivalence checker).
 <ul>
-<li> <a href=https://github.com/UoB-HPC/TSVC_2>Testsuite for Vectorizing Compilers</a>.<br>
+<li> <a href=https://github.com/UoB-HPC/TSVC_2>Testsuite for Vectorizing Compilers</a> at <code>O3</code> optimization: session name <code class="session-name">tsvc-clang</code>.<br>
 <small class=example-description>The compilations of these programs involve aggressive loop vectorizing transformations.</small>
-<ul>
-<li>Compiled using Clang-12 at <code>O3</code>: session name <code class="session-name">tsvc-clang</code></li>
-<li>Compiled using GCC-8 at <code>O3</code>: session name <code class="session-name">tsvc-gcc</code></li>
-<li>Compiled using ICC-2022.2.1 (Intel C Compiler) at <code>O3</code>: session name <code class="session-name">tsvc-icc</code></li>
-</ul>
 </li>
-<li> Verified <code>O1</code> compilation of sorting functions, such as quicksort, mergesort, etc.: session name <code class="session-name">sorting-functions</code>.<br>
+<li> Sorting functions, such as quicksort and mergesort at <code>O1</code> optimization: session name <code class="session-name">sorting-functions</code>.<br>
 <small class=example-description>These functions involve local variables, recursion, variadic functions and function calls.</small>
 </li>
-<li> Verified <code>O1</code> compilation of functions from the <code>bzip2</code> compression utility: session name <code class="session-name">bzip2</code>.<br>
+<li> The <code>bzip2</code> compression utility at <code>O1</code> optimization: session name <code class="session-name">bzip2</code>.<br>
 <small class=example-description>These are larger functions with very complex control flow and memory allocation patterns.</small>
 </li>
 <li> Equivalence of two manually coded programs, source-to-source or source-to-assembly: session name <code class="session-name">manually-coded</code>.<br>
@@ -256,11 +252,10 @@ identify an equivalence proof.
 
 <p>
 We are continuously
-improving the coverage of our equivalence checker, i.e., we are always working to minimize
+improving the coverage of our equivalence checker by minimizing
 the cases where the equivalence checker is unable to identify an equivalence proof (when
 the programs were indeed equivalent). If you are using the tool to produce a verified compilation
-of a C program,
-you can make the equivalence proof search more tractable by
+of a C program, you can make the equivalence proof search more tractable by
 dividing the C program into smaller individual functions.
 
 <p>
