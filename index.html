@@ -247,23 +247,26 @@ the equivalence checker is able to compute equivalence for a
 large category of transformations
 on a large set of programs. If an equivalence check does not succeed (e.g., it
 runs for a long time and gets terminated after a timeout), then this may be either
-because the programs were inequivalent or because our algorithm just could not
-identify an equivalence proof.
+because the programs were inequivalent or because our algorithm could not
+identify an equivalence proof.  The latter situation is due to the
+<em>incompleteness</em> of our equivalence checker.  The equivalence checker is always
+<em>sound</em> --- if a formal equivalence proof is identified, the two input programs are
+guaranteed to have equivalent runtime behaviour.
 
 <p>
 We are continuously
-improving the coverage of our equivalence checker by minimizing
+improving the completeness of our equivalence checker by minimizing
 the cases where the equivalence checker is unable to identify an equivalence proof (when
-the programs were indeed equivalent). If you are using the tool to produce a verified compilation
+the programs were indeed equivalent). If you use the
+equivalence checker to produce a verified compilation
 of a C program, you can make the equivalence proof search more tractable by
-dividing the C program into smaller individual functions.
+dividing the input C program into smaller individual functions.
 
 <p>
-Please try the equivalence checker for yourself.  If you
-have critical
-feedback, please share it with us
+Please try the equivalence checker for yourself.
+Please share your feedback with us
 at <a href=mailto:sorav@compiler.ai>sorav@compiler.ai</a> --- we very
-much appreciate your feedback.
+much appreciate your critical feedback.
   </body>
 </html>
 
