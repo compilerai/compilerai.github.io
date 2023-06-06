@@ -92,7 +92,7 @@ the equivalence checker on your browser by following the steps below.
 <img class="center-fit" src=eqchecker-extension.png alt="Type Eqchecker in the extension search box">
 </div>
 </li>
-<li> Check the version number of the "Eqchecker" extension. It should be at least <code>0.4.0</code>.
+<li> Check the version number of the "Eqchecker" extension. It should be at least <code>0.9.0</code>.
 <div class="imgbox">
 <img class="center-fit" src=eqchecker-extension-version.png alt="Check the Eqchecker extension version">
 </div>
@@ -153,9 +153,9 @@ The equivalence checks are performed at function granularity.  For two files to 
 <li> After an equivalence check (or verified compilation) begins, the progress of the compilation is shown as an <em>eqcheck entry</em> in the &quot;Equivalence Checks&quot; pane.  The status of the corresponding entry updates as the equivalence check proceeds.
 
 <p>
-If the input files contained multiple functions, a separate eqcheck entry is created for each function, after the initial processing of the input files.
+If an input file contain multiple functions, a separate eqcheck entry is created for each function, after the initial processing of the input files.
 
-<p>Depending on the complexity of the transformations and the size of the input function, an equivalence check can take anywhere between a few seconds to a few hours.  Our research continously strives to make this faster.
+<p>Depending on the complexity of the transformations and the size of the input function, an equivalence check can take anywhere between a few seconds to a few hours.  Our research continuously strives to make this faster.
 <div class="imgbox">
 <img class="center-fit" src=eqcheck-progress.png alt="The progress of an equivalence check is available in the eqcheck entry">
 </div>
@@ -206,7 +206,7 @@ the reasons for the equivalence failure.
 <li> The search tree is displayed in the &quot;Search Tree&quot; pane in a tree representation.  The tree represents all the different
 product-graphs explored by the equivalence checker before arriving at a final proof.
 
-<p>You can click on any of the nodes of this search tree to view the (partial) product graph developed incrementally by the algorihm
+<p>You can click on any of the nodes of this search tree to view the (partial) product graph developed incrementally by the algorithm
 till that stage.  Different branches of the tree may represent different product graphs --- it is possible for the search algorithm to
 backtrack during this search for a proof.
 <div class="imgbox">
