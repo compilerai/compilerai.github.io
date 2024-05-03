@@ -2,7 +2,7 @@
   <head>
         <link rel="icon" href="favicon.ico?v=1">
         <meta charset="UTF-8">
-        <title>compiler.ai : Bugs found by our Verification Tools</title>
+        <title>compiler.ai : Bugs found by the Equivalence Checker</title>
         <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="@CompileExplore">
         <meta property="og:image" content="https://github.com/compiler-explorer/infra/blob/master/logo/favicon.png?raw=true">
@@ -16,7 +16,7 @@
         <meta id="meta-theme" name="theme-color" content="#f2f2f2">
     <link rel="stylesheet" href="https://compiler.ai/bugs/main.css">
     <meta name='viewport', content='width=device-width, initial-scale=1.0'>
-    <title>compiler.ai · Bugs found by our Verification Tools</title>
+    <title>compiler.ai · Bugs found by the Equivalence Checker</title>
   </head>
   <body> 
     <div class="container content">
@@ -24,7 +24,7 @@
         <h3 class="masthead-title">
           <a href='/', title='Home'>compiler.ai : Bugs</a>
         </h3>
-        <small>Bugs discovered found by our Verification Tools</small>
+        <small>Bugs discovered found by the Equivalence Checker</small>
       </header>
       <main>
         <article class="post">
@@ -66,6 +66,27 @@
                 <li>This bug report confirms that verification tools themselves are not immune to bugs. But it is usually possible to identify these bugs through simple testing, as we do in our tool.</li>
               </ul>
             </li>
+            <li> 
+<a href=https://git.kernel.org/pub/scm/libs/klibc/klibc.git/commit/?id=61d2ea539c88f7862b3992b9a00daaedb6bb68ef>
+Bug in strrchr() function  in klibc-2.0.11 related to missing handling of c == 0 (kernel)</a>
+<ul>
+<li>This bug relates to the case when the character to be searched is itself the null-character.  This bug was identified by comparing multiple implementations of a C library function for equivalence using our equivalence checker.</li>
+</ul>
+</li>
+<li><a href=http://mail-index.netbsd.org/netbsd-bugs/2022/12/28/msg076722.html>Bug in swab() function in NetBSD’s C library  (3290fbc)</a>.Fix on Github</a>
+<ul>
+<li>This bug relates to an incorrect output on a well-formed input to the <code>swab</code> function.  This bug was identified by comparing multiple implementations of a C library function for equivalence using our equivalence checker.</li>
+<li> This bug was fixed upon our reporting and the <a href=https://github.com/NetBSD/src/commit/57b317cccef5758930d99cf66db271837fe60546>Github commit message</a> mentions that this bug had escaped over two decades of testing!
+</ul>
+</li>
+<li><a href=https://sourceware.org/pipermail/newlib/2023/020083.html>Bug in the memccpy() function in Newlib-4.2.0 (embedded systems C library)</a>
+<ul>
+<li>This bug relates to a missing type-cast in the <code>memccpy</code> function.  This bug was identified by comparing multiple implementations of a C library function for equivalence using our equivalence checker.</li>
+</ul>
+</li>
+
+</li>
+
           </ul>
        </article>
        </main>
